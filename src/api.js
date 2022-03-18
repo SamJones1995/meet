@@ -37,6 +37,21 @@ const checkToken = async (accessToken) => {
   return result;  
 };
 
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+    'https://37ns3waruj.execute-api.us-east-1.amazonaws.com/dev/api/token' + '/' + encodeCode
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
+  
+  access_token && localStorage.setItem("access_token", access_token);
+
+  return access_token;
+};
+
 export const getEvents = async () => {
   NProgress.start();
 
@@ -76,22 +91,8 @@ export const getAccessToken = async () => {
         const { authURL } = results.data;
         return (window.location.href = authURL);
       }
-      return code && getAccessToken(code); 
+      return code && getToken(code); 
     }
     return accessToken;
 };
 
-const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    'https://37ns3waruj.execute-api.us-east-1.amazonaws.com/dev/api/token' + '/' + encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => error);
-  
-  access_token && localStorage.setItem("access_token", access_token);
-
-  return access_token;
-};
