@@ -7,13 +7,15 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 
 class App extends Component {
-  state = {
+    state = {
     events: [],
     locations: [],
     numberOfEvents: 32
-  }
+    }
+  
 
   componentDidMount() {
+    const { numberOfEvents } = this.state;
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
@@ -43,12 +45,15 @@ class App extends Component {
     });
   };
 
+    
+  
+
   render() {
     return (
       <div className="App">
-        <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
-        <NumberOfEvents />
+        <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/>
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={updateEvents} />
       </div>
     );
   }
