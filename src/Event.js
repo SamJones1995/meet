@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Card } from "react-bootstrap";
 
 class Event extends Component {
 
@@ -16,8 +17,10 @@ handleClick = () => {
     const { event } = this.props;
     const { collapsed } = this.state;
 
-    return <div className="event">
-        <h2 className="summary">{event.summary}</h2>
+    return (
+    <Card className="event">
+        <Card.Header className="summary">{event.summary}</Card.Header>
+				<Card.Body className="event-body">
         <p className="start-date">
             {event.start.dateTime} ({event.start.timeZone})
         </p>
@@ -25,8 +28,8 @@ handleClick = () => {
         <p className="location">
             {event.location}
         </p>
-        <button className={`${collapsed ? "show" : "hide"}-details`} 
-        onClick={this.handleClick}>{collapsed ? "Show Details" : "Hide Details"}</button>
+        <Button className={`${collapsed ? "show" : "hide"}-details`} 
+        onClick={this.handleClick}>{collapsed ? "Show Details" : "Hide Details"}</Button>
 
         {!collapsed &&
         <div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>
@@ -37,7 +40,9 @@ handleClick = () => {
         <p className="event-description">{event.description}</p>
         </div>
         }
-    </div>;
-  }
+				</Card.Body>
+    </Card>
+    );
+	}
 }
 export default Event;
