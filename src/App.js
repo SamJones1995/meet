@@ -15,12 +15,11 @@ class App extends Component {
   
 
   componentDidMount() {
-    const { numberOfEvents } = this.state;
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ 
-          events: events.slice(0, this.state.numberOfEvents), 
+          events: events, 
           locations: extractLocations(events) });
       }
     });
@@ -30,31 +29,46 @@ class App extends Component {
     this.mounted = false;
   }
 
+  updateNumberOfEvents = (numberOfEvents) => {
+    this.setState(
+      {
+        numberOfEvents,
+      },
+      this.updateEvents(this.state.location, numberOfEvents)
+    );
+  };
+
   updateEvents = (location, eventCount) => {
+    this.mounted = true;
     getEvents().then((events) => {
       const locationEvents =
-        location === "all"
+        location === "all" && eventCount === 0
           ? events
-          : events.filter((event) => event.location === location);
+          : location !== "all" && eventCount === 0
+          ? events.filter((event) => event.location === location)
+          : events.slice(0, eventCount);
       if (this.mounted) {
         this.setState({
-          events: locationEvents.slice(0, this.state.numberOfEvents),
-          currentLocation: location,
-          numberOfEvents: eventCount
+          events: locationEvents,
+          numberOfEvents: eventCount,
         });
       }
     });
   };
 
     
-  
+  //<NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} /> 
 
   render() {
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
         <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/>
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
+        <NumberOfEvents
+          updateNumberOfEvents={(number) => {
+            this.updateNumberOfEvents(number);
+          }}
+        />
       </div>
     );
   }
