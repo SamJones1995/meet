@@ -10,16 +10,18 @@ class App extends Component {
     state = {
     events: [],
     locations: [],
-    numberOfEvents: 32
+    numberOfEvents: 32,
+    activeLocation: 'all'
     }
   
 
   componentDidMount() {
+    const { numberOfEvents } = this.state;
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ 
-          events: events, 
+          events: events.slice(0, this.state.numberOfEvents), 
           locations: extractLocations(events) });
       }
     });
@@ -29,45 +31,39 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateNumberOfEvents = (numberOfEvents) => {
+  updateNumberOfEvents = (number) => {
     this.setState(
       {
-        numberOfEvents,
-      },
-      this.updateEvents(this.state.location, numberOfEvents)
-    );
+        numberOfEvents: number,
+      });
+      this.updateEvents(this.state.activeLocation, number)
+    
   };
 
-  updateEvents = (location, eventCount) => {
-    this.mounted = true;
+  updateEvents = (location, eventCount = this.state.eventCount) => {
     getEvents().then((events) => {
-      const locationEvents =
-        location === "all" && eventCount === 0
-          ? events
-          : location !== "all" && eventCount === 0
-          ? events.filter((event) => event.location === location)
-          : events.slice(0, eventCount);
-      if (this.mounted) {
-        this.setState({
-          events: locationEvents,
-          numberOfEvents: eventCount,
-        });
-      }
+      let locationEvents = (location === "all" ? events : events.filter((event) => event.location === location));
+      locationEvents = locationEvents.slice(0, eventCount)
+      this.setState({
+        events: locationEvents,
+        numberOfEvents: eventCount,
+        activeLocation: location
+      });
     });
-  };
+  }
 
     
   //<NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} /> 
 
   render() {
+    
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
         <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/>
         <NumberOfEvents
-          updateNumberOfEvents={(number) => {
-            this.updateNumberOfEvents(number);
-          }}
+          updateNumberOfEvents={this.updateNumberOfEvents}
+          numberOfEvents={this.state.numberOfEvents}
         />
       </div>
     );
