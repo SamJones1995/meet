@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
+import {Navbar, Container} from 'react-bootstrap';
 
 class App extends Component {
     state = {
@@ -59,12 +60,31 @@ class App extends Component {
     
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
-        <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/>
-        <NumberOfEvents
-          updateNumberOfEvents={this.updateNumberOfEvents}
-          numberOfEvents={this.state.numberOfEvents}
-        />
+        <Container>
+          <Navbar expand="lg" className="mb-4" sticky="top">
+            <Container>
+              <Navbar.Brand >meet</Navbar.Brand>
+            </Container>
+            <Container className="justify-content-end">
+              <CitySearch 
+                locations={this.state.locations} 
+                updateEvents={this.updateEvents}/>
+            </Container>
+          </Navbar>
+        </Container>
+        <EventList 
+          events={this.state.events} 
+          numberOfEvents={this.state.numberOfEvents}/>
+        <Container>
+          <Navbar sticky="bottom">
+            <Container className="justify-content-center">
+              <NumberOfEvents
+                updateNumberOfEvents={this.updateNumberOfEvents}
+                numberOfEvents={this.state.numberOfEvents}
+              />
+            </Container>
+          </Navbar>
+        </Container>
       </div>
     );
   }

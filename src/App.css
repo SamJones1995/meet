@@ -198,6 +198,12 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
+.navbar-brand {
+
+  font-size: 50px !important;
+
+}
+
 
 
 @media only screen and (min-width: 992px) {

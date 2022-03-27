@@ -19,27 +19,29 @@ handleClick = () => {
 
     return (
     <Card className="event">
-        <Card.Header className="summary">{event.summary}</Card.Header>
+				<Card.Header>
+        	<Card.Title className="summary">{event.summary}</Card.Title>
+				</Card.Header>	
 				<Card.Body className="event-body">
-        <p className="start-date">
-            {event.start.dateTime} ({event.start.timeZone})
-        </p>
-        <p className></p>
-        <p className="location">
-            {event.location}
-        </p>
-        <Button className={`${collapsed ? "show" : "hide"}-details`} 
-        onClick={this.handleClick}>{collapsed ? "Show Details" : "Hide Details"}</Button>
+					<p className="start-date">
+							{event.start.dateTime} ({event.start.timeZone})
+					</p>
+					<p className></p>
+					<p className="location">
+							{event.location}
+					</p>
+					<Button className={`${collapsed ? "show" : "hide"}-details`} 
+					onClick={this.handleClick}>{collapsed ? "Show Details" : "Hide Details"}</Button>
 
-        {!collapsed &&
-        <div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>
-        <h3>About the event:</h3>
-        <a href={event.htmlLink} rel="noreferrer" target="_blank">
-            See details on Google Calendar
-            </a>
-        <p className="event-description">{event.description}</p>
-        </div>
-        }
+					{!collapsed &&
+					<div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>
+					<h3>About the event:</h3>
+					<a href={event.htmlLink} rel="noreferrer" target="_blank">
+							See details on Google Calendar
+							</a>
+					<p className="event-description">{event.description}</p>
+					</div>
+					}
 				</Card.Body>
     </Card>
     );
