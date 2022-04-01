@@ -22,7 +22,7 @@ handleClick = () => {
 				<Card.Header>
         	<Card.Title className="summary">{event.summary}</Card.Title>
 				</Card.Header>	
-				<Card.Body className="event-body">
+				<Card.Body className="eventBody">
 					<p className="start-date">
 							{event.start.dateTime} ({event.start.timeZone})
 					</p>
