@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './CitySearch.css';
 
 class CitySearch extends Component {
 	state = {

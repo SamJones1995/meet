@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './NumberOfEvents.css';
 
 class NumberOfEvents extends Component {
 	constructor() {
@@ -27,7 +28,7 @@ class NumberOfEvents extends Component {
         <div className='NumberOfEvents'>
             <input
 						type="number"
-						ref={this.myRef}
+						placeholder='Number of Events'
 						className="numberOfEvents"
 						onChange={this.handleInputChanged} 
 						value={this.state.numberOfEvents}

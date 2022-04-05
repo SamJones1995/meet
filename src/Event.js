@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Card } from "react-bootstrap";
+import './Event.css';
 
 class Event extends Component {
 
@@ -32,14 +33,14 @@ handleClick = () => {
 					</p>
 					<Button className={`${collapsed ? "show" : "hide"}-details`} 
 					onClick={this.handleClick}>{collapsed ? "Show Details" : "Hide Details"}</Button>
-
+					
 					{!collapsed &&
 					<div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>
-					<h3>About the event:</h3>
-					<a href={event.htmlLink} rel="noreferrer" target="_blank">
+					<p className="event-description">{event.description}</p>
+					<a className="details-link" href={event.htmlLink} rel="noreferrer" target="_blank">
 							See details on Google Calendar
 							</a>
-					<p className="event-description">{event.description}</p>
+					
 					</div>
 					}
 				</Card.Body>

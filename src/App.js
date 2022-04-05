@@ -12,7 +12,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    activeLocation: 'all'
+    //activeLocation: 'all'
     }
   
 
@@ -62,10 +62,11 @@ class App extends Component {
     
     return (
       <div className="App">
+        
         <Container>
           <Navbar expand="lg" className="mb-4" sticky="top">
             <Container>
-              <Navbar.Brand >meet</Navbar.Brand>
+              <Navbar.Brand className="brand">meet</Navbar.Brand>
             </Container>
             <Container className="justify-content-end">
               <CitySearch 

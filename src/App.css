@@ -2,8 +2,12 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-color: #c8d8e4 !important;
 }
 
+.brand {
+  color: #ffffff !important;
+}
 .App * {
   box-sizing: border-box;
 }
@@ -39,7 +43,6 @@ input[type="number"] {
 .city {
   width: 250px;
 }
-
 .CitySearch {
   display: flex;
   flex-direction: column;
@@ -83,6 +86,7 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  background-color: #1669f2;
 }
 
 .details-btn {
