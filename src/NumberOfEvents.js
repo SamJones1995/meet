@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './NumberOfEvents.css';
+import { ErrorAlert } from './Alert';
+import {Navbar, Container} from 'react-bootstrap';
 
 class NumberOfEvents extends Component {
 	constructor() {
@@ -15,10 +17,17 @@ class NumberOfEvents extends Component {
 
 	handleInputChanged = (event) => {
 		const number = event.target.value
-      this.setState({
-        numberOfEvents: number,
-      });
-			
+		if (number < 1 || number > 32) {
+			this.setState({	
+				numberOfEvents: "",
+        infoText: "Enter number from 1 - 32",
+			});	
+		} else {
+				this.setState({
+					numberOfEvents: number,
+					infoText: ""
+				});
+		}
     this.props.updateNumberOfEvents(event.target.value);
 		//console.log(number);
   };
@@ -26,15 +35,14 @@ class NumberOfEvents extends Component {
     render() {
       return (  
         <div className='NumberOfEvents'>
-            <input
+          <input
 						type="number"
-						placeholder='Number of Events'
 						className="numberOfEvents"
 						onChange={this.handleInputChanged} 
 						value={this.state.numberOfEvents}
-						/>
-						
-        </div>
+					/>
+					<ErrorAlert text={this.state.infoText} />
+        </div>				
 			);	
     }
 };    
