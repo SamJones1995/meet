@@ -80,7 +80,6 @@ class App extends Component {
         <EventList 
           events={this.state.events} 
           numberOfEvents={this.state.numberOfEvents}/>
-        <OfflineAlert text={OfflineAlertText} />  
         <Container>
           <Navbar sticky="bottom">
             <Container className="justify-content-center">
