@@ -11,11 +11,11 @@
   top: 0;
   justify-content: center;
   padding-top: 80px;
-  background: linear-gradient(rgb(195, 247, 195), rgb(26, 160, 26));
+  background-color: #c8d8e4;
 }
 
 .login-button {
-  color: #494949;
+  color: #2b6777;
   text-transform: uppercase;
   text-decoration: none;
   background: #ffffff;
@@ -63,8 +63,8 @@
   font-size: 14px;
   font-weight: lighter;
   letter-spacing: 0.2px;
-  font-family: "Rubik";
-  background-color: #76787a;
+  font-family: "Roboto";
+  background-color: #2b6777;
   width: 80%;
   height: 100%;
   text-align: center;

@@ -40,7 +40,7 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <div className='CitySearch'>
+      <div className='CitySearch' style={{display:  this.state.showWelcomeScreen ? 'block' : 'none'} }>
 				<InfoAlert text={this.state.infoText} />
         <input
 					type="text"

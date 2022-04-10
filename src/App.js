@@ -70,19 +70,23 @@ class App extends Component {
   //<NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} /> 
 
   render() {
-    if (this.state.showWelcomeScreen === undefined) return <div className='App' />
+    if (this.state.showWelcomeScreen === undefined) 
+    return <div className="App" />;
+      
+    
     return (
       <div className="App">
         
         <Container>
           <Navbar expand="lg" className="mb-4" sticky="top">
             <Container>
-              <Navbar.Brand className="brand">meet</Navbar.Brand>
+              <Navbar.Brand className="brand" >meet</Navbar.Brand>
             </Container>
             <Container className="justify-content-end">
               <CitySearch 
                 locations={this.state.locations} 
-                updateEvents={this.updateEvents}/>
+                updateEvents={this.updateEvents}
+                showWelcomeScreen={this.state.showWelcomeScreen}/>
             </Container>
           </Navbar>
         </Container>
@@ -99,14 +103,15 @@ class App extends Component {
             </Container>
           </Navbar>
         </Container>
-        <Container>
+        
           <WelcomeScreen
             showWelcomeScreen={this.state.showWelcomeScreen}
             getAccessToken={() => {
               getAccessToken();
             }} />
-        </Container>
+        
       </div>
+      
     );
   }
 }
