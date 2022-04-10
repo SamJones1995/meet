@@ -26,15 +26,6 @@ class App extends Component {
           locations: extractLocations(events) });
       }
     });
-    if (!navigator.onLine) {
-      this.setState({
-        OfflineAlertText: 'You are not connected to the internet'
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: ''
-      });
-    }
   }
 
   
@@ -71,7 +62,6 @@ class App extends Component {
   //<NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} /> 
 
   render() {
-    const { OfflineAlertText } = this.state;
     return (
       <div className="App">
         
