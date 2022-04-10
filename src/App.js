@@ -6,6 +6,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import {Navbar, Container} from 'react-bootstrap';
+import { OfflineAlert } from './Alert';
 
 class App extends Component {
     state = {
@@ -25,7 +26,18 @@ class App extends Component {
           locations: extractLocations(events) });
       }
     });
+    if (!navigator.onLine) {
+      this.setState({
+        OfflineAlertText: 'You are not connected to the internet'
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: ''
+      });
+    }
   }
+
+  
 
   componentWillUnmount() {
     this.mounted = false;
@@ -59,7 +71,7 @@ class App extends Component {
   //<NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} /> 
 
   render() {
-    
+    const { OfflineAlertText } = this.state;
     return (
       <div className="App">
         
@@ -78,6 +90,7 @@ class App extends Component {
         <EventList 
           events={this.state.events} 
           numberOfEvents={this.state.numberOfEvents}/>
+        <OfflineAlert text={OfflineAlertText} />  
         <Container>
           <Navbar sticky="bottom">
             <Container className="justify-content-center">
