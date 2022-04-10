@@ -9,7 +9,7 @@ class EventList extends Component {
     return (
       <Container className="EventList">
         {!navigator.onLine ? (
-          <OfflineAlert text="You are offline! The displayed event list has been loaded from the cache." />
+          <OfflineAlert text="You are offline! Events may not be up to date" />
         ) : (
           <OfflineAlert text="" />
         )}
