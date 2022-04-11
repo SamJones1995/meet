@@ -13,7 +13,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    showWelcomeScreen: undefined
+    showWelcomeScreen: false
     }
   
 
@@ -73,7 +73,7 @@ class App extends Component {
     if (this.state.showWelcomeScreen === undefined) 
     return <div className="App" />;
       
-    
+    console.log(this.state.showWelcomeScreen);
     return (
       <div className="App">
         
