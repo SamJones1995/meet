@@ -84,6 +84,7 @@ class App extends Component {
             </Container>
             <Container className="justify-content-end">
               <CitySearch 
+                style={{display:  this.state.showWelcomeScreen !== undefined ? 'block' : 'none'} }
                 locations={this.state.locations} 
                 updateEvents={this.updateEvents}
                 showWelcomeScreen={this.state.showWelcomeScreen}/>
