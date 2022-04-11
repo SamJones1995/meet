@@ -78,9 +78,8 @@ class App extends Component {
       <div className="App">
         
         <Container>
-          <Navbar expand="lg" className="mb-4" sticky="top">
             <Container>
-              <Navbar.Brand className="brand" >meet</Navbar.Brand>
+              <h4 className="brand" >meet</ h4>
             </Container>
             <Container className="justify-content-end">
               <CitySearch 
@@ -88,7 +87,6 @@ class App extends Component {
                 updateEvents={this.updateEvents}
                 showWelcomeScreen={this.state.showWelcomeScreen}/>
             </Container>
-          </Navbar>
         </Container>
         <EventList 
           events={this.state.events} 
