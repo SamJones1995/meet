@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.page-wrapper {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  color: var(--clr-neutral-drk);
+  font-family: var(--font);
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  padding: 0 0.5rem;
+}
+
+.page-wrapper {
+  text-align: center;
+  padding: 4rem 3rem;
+  background-color: #c8d8e4;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 20vh;
+}
+
+.text {
+  text-align: justify;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
