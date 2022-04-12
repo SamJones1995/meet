@@ -4,6 +4,8 @@ class Alert extends Component {
   constructor(props) {
     super(props);
     this.color = null;
+    this.position = "fixed";
+    this.padding = "5px";
   }
 
   getStyle = () => {
@@ -30,8 +32,10 @@ class InfoAlert extends Alert {
   getStyle = () => {
     return {
       color: this.color,
-      marginLeft: '30px',
-      fontStyle: 'Helvetica'
+      top: 0,
+      right: 0,
+      position: "fixed",
+      padding: "5px"
     };
   }
 }
@@ -45,14 +49,10 @@ class ErrorAlert extends Alert {
   getStyle = () => {
     return {
       color: this.color,
+      right: 0,
+      top: 50,
       position: "fixed",
-      bottom: 0,
-      width: "200px",
-      //backgroundColor: "#c8d8e4",
-      marginBottom: "5px",
-      borderRadius: "25px",
-      padding: "5px",
-      fontStyle: 'Helvetica'
+      padding: "5px"
     };
   }
 }
@@ -61,6 +61,16 @@ class OfflineAlert extends Alert {
   constructor(props) {
     super(props);
     this.color = '#cc3300';
+  }
+
+  getStyle = () => {
+    return {
+      color: this.color,
+      top: 0,
+      left: 0,
+      width: "200px",
+      fontStyle: 'Helvetica'
+    };
   }
 }
 

@@ -3,10 +3,18 @@
   text-align: center;
   padding: 2% 5%;
   background-color: #c8d8e4 !important;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.data-vis-wrapper .recharts-responsive-container {
+  min-width: 100%;
+  display: flex;
 }
 
 .brand {
   color: #ffffff !important;
+  font-size: xx-large;
 }
 .App * {
   box-sizing: border-box;
@@ -53,14 +61,14 @@ input[type="number"] {
 }
 
 .suggestions {
-  width: 250px;
+  width: 275px;
   position: absolute;
   z-index: 2;
   align-self: center;
   margin: 0;
   top: 43px;
   font-size: 14px;
-  box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+  box-shadow: 15px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
 
 .suggestions > li {
@@ -120,7 +128,7 @@ input[type="number"] {
 
 .numberOfEvents {
   width: 200px;
-  margin: 20px auto;
+  
   text-align: center;
 }
 
