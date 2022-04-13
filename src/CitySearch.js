@@ -17,7 +17,7 @@ class CitySearch extends Component {
 		});
 		if (suggestions.length === 0) {
 			//moves suggestions box down when InfoAlert appears
-			movedSuggestions.style.top = "65px";
+			movedSuggestions.style.top = "60px";
 			this.setState({
 				query: value,
 				infoText: 'Invalid entry please try another city',
