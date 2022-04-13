@@ -17,7 +17,6 @@ class App extends Component {
     numberOfEvents: 32,
     showWelcomeScreen: false
     }
-  
 
     async componentDidMount() {
       this.mounted = true;
@@ -36,10 +35,8 @@ class App extends Component {
         }
       });
       }
-    }    
-
+    }
   
-
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -94,8 +91,7 @@ class App extends Component {
                 locations={this.state.locations} 
                 updateEvents={this.updateEvents}/>
             </Col>
-            <Col>
-            
+            <Col md={5}>
             <NumberOfEvents
                 updateNumberOfEvents={this.updateNumberOfEvents}
                 numberOfEvents={this.state.numberOfEvents}

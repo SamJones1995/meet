@@ -4,8 +4,6 @@ class Alert extends Component {
   constructor(props) {
     super(props);
     this.color = null;
-    this.position = "fixed";
-    this.padding = "5px";
   }
 
   getStyle = () => {
@@ -32,10 +30,6 @@ class InfoAlert extends Alert {
   getStyle = () => {
     return {
       color: this.color,
-      top: 0,
-      right: 0,
-      position: "fixed",
-      padding: "5px"
     };
   }
 }
@@ -49,10 +43,6 @@ class ErrorAlert extends Alert {
   getStyle = () => {
     return {
       color: this.color,
-      right: 0,
-      top: 50,
-      position: "fixed",
-      padding: "5px"
     };
   }
 }
@@ -66,10 +56,7 @@ class OfflineAlert extends Alert {
   getStyle = () => {
     return {
       color: this.color,
-      top: 0,
-      left: 0,
-      width: "200px",
-      fontStyle: 'Helvetica'
+      marginBottom: '5px !important',
     };
   }
 }

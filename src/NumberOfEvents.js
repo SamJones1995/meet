@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './NumberOfEvents.css';
 import { ErrorAlert } from './Alert';
 import {Navbar, Container} from 'react-bootstrap';
 
@@ -11,10 +10,9 @@ class NumberOfEvents extends Component {
 	
 	state = {
 				numberOfEvents: 32,
+				infoText: ''
 	}
 	
-		
-
 	handleInputChanged = (event) => {
 		const number = event.target.value
 		if (number < 1 || number > 32) {

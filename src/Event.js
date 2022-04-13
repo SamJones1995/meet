@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Card } from "react-bootstrap";
-import './Event.css';
 
 class Event extends Component {
 
